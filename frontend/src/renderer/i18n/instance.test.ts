@@ -11,6 +11,7 @@ import {
 	koMessages,
 	ptBRMessages,
 	ruMessages,
+	trMessages,
 	zhCNMessages,
 } from "./all-messages";
 
@@ -24,6 +25,7 @@ const allCatalogs = {
 	de: deMessages,
 	"pt-BR": ptBRMessages,
 	ru: ruMessages,
+	tr: trMessages,
 } as const;
 
 function emptyCatalogs(): TranslationCatalogs {
@@ -41,6 +43,7 @@ describe("coerceLocale", () => {
 		expect(coerceLocale("de")).toBe("de");
 		expect(coerceLocale("pt-BR")).toBe("pt-BR");
 		expect(coerceLocale("ru")).toBe("ru");
+		expect(coerceLocale("tr")).toBe("tr");
 	});
 
 	it("defaults unknown values to en", () => {
@@ -87,6 +90,7 @@ describe("app i18next instance", () => {
 			de: "settings.language.de",
 			"pt-BR": "settings.language.ptBR",
 			ru: "settings.language.ru",
+			tr: "settings.language.tr",
 		} as const;
 		const expected = {
 			en: "English",
@@ -98,6 +102,7 @@ describe("app i18next instance", () => {
 			de: "Deutsch",
 			"pt-BR": "Português (Brasil)",
 			ru: "Русский",
+			tr: "Türkçe",
 		} as const;
 		for (const locale of APP_LOCALES) {
 			expect(createAppI18n(locale).t(labels[locale])).toBe(expected[locale]);
@@ -155,6 +160,16 @@ describe("app i18next instance", () => {
 			"22 черновика",
 			"25 черновиков",
 		]);
+	});
+
+	it("renders the Turkish one and other plural forms", () => {
+		const instance = createAppI18n("tr");
+		expect([1, 2, 5].map((count) => instance.t("pr.progress.draft", { count }))).toEqual([
+			"1 taslak",
+			"2 taslak",
+			"5 taslak",
+		]);
+		expect(instance.t("tray.attentionTooltip", { count: 3 })).toBe("3 oturum ilgi bekliyor");
 	});
 
 	it("localizes Cloud project setup and settings copy that only had inline English defaults", () => {

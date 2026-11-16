@@ -139,5 +139,18 @@ export const trayCatalogs: Record<AppLocale, Record<TrayMessageKey, string> & Pa
 		"zone.action": "Требуется ваше действие",
 		"tray.attentionTooltip_few": "{{count}} сессии требуют внимания",
 		"tray.attentionTooltip_many": "{{count}} сессий требуют внимания"
+	},
+	"tr": {
+		"tray.awakeActive": "Uyanık Kal: bu Mac uyanık tutuluyor",
+		"tray.awakeUnknown": "Uyanık Kal: durum alınamıyor",
+		"tray.untitledSession": "Adsız oturum",
+		"tray.attentionTooltip_one": "{{count}} oturum ilgi bekliyor",
+		"tray.attentionTooltip_other": "{{count}} oturum ilgi bekliyor",
+		"tray.empty": "İlgi bekleyen oturum yok",
+		"tray.more": "Daha fazla",
+		"tray.show": "Orchestrator'ı Göster",
+		"tray.quit": "Orchestrator'dan Tamamen Çık",
+		"zone.merge": "Birleştirmeye hazır",
+		"zone.action": "Sizi bekliyor"
 	}
 };
